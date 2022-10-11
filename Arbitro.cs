@@ -20,13 +20,13 @@ public class Arbitro : MonoBehaviour
     {
         Ultimo_Equipo = "";
 
-        UltimoTiempo_PelotaTocada = Time.time;
+        UltimoTiempo_PelotaTocada = Time.time; //tener referencia de cuando tocan la pelota
         Tiempo_Restart = 10;
     }
 
     void Update()
     {
-        if (Time.time - UltimoTiempo_PelotaTocada > Tiempo_Restart)
+        if (Time.time - UltimoTiempo_PelotaTocada > Tiempo_Restart) // no se quede la pelota atascada y no se haga nada
         {
             RestartPelota();
         }
@@ -36,13 +36,13 @@ public class Arbitro : MonoBehaviour
     {
         if (other.gameObject.tag == "Pelota")
         {
-            Goal(other.transform.localPosition.x);
+            Goal(other.transform.localPosition.x); //obtener coordenada x para evaluar en donde se mete el gol
         }
     }
 
     public void Goal(float pelota_Xcord) 
     {
-        if (pelota_Xcord > 0)
+        if (pelota_Xcord > 0) //estas condiciones son para saber de quien fue el gol o autogol
         {
             if (Ultimo_Equipo == "JugadorRojo")
             {
@@ -71,21 +71,21 @@ public class Arbitro : MonoBehaviour
 
         }
 
-        RestartMatch();
+        RestartMatch(); //reiniciamos cuando se meta gol para seguir el juego
 
     }
 
-    void RestartPelota()
+    void RestartPelota() //vuelve a generarse la pelota
     {
         pelota.RestartPosition();
         pelota.ApplyRandomForce();
         
         Ultimo_Equipo = "";
 
-        UltimoTiempo_PelotaTocada = Time.time;
+        UltimoTiempo_PelotaTocada = Time.time; //obtenemos tiempo de que se toco la pelota para reinciar en caso de que nadie la pueda tocar
     }
 
-    void RestartMatch()
+    void RestartMatch() //reinciar el juego
     {
         RestartPelota();
 
@@ -93,7 +93,7 @@ public class Arbitro : MonoBehaviour
         agente_rojo.TerminarPartido();
     }
 
-    public void TouchedBall(string ultimo_jugador)
+    public void TouchedBall(string ultimo_jugador) //para saber que equipo esta tocando la pelota
     {
         if (ultimo_jugador == "JugadorRojo")
         {
@@ -113,7 +113,7 @@ public class Arbitro : MonoBehaviour
         }
     }
 
-    public void NotTouching()
+    public void NotTouching() //para saber quien no esta tocando la pelota
     {
         agente_rojo.NoTocando();
         agente_azul.NoTocando();
