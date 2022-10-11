@@ -5,6 +5,7 @@ using UnityEngine;
 public class Arbitro : MonoBehaviour
 {
     public Pelota pelota;
+    public Transform T_pelota;
     public PlayerAgent agente_azul;
     public PlayerAgent agente_rojo;
 
@@ -15,8 +16,8 @@ public class Arbitro : MonoBehaviour
     float UltimoTiempo_PelotaTocada;
     float Tiempo_Restart;
 
-    int goles_azul;
-    int goles_rojo;
+    // int goles_azul;
+    // int goles_rojo;
 
     void Start()
     {
@@ -61,13 +62,13 @@ public class Arbitro : MonoBehaviour
     {
         if (other.gameObject.tag == "Pelota")
         {
-            this.Goal(gameObject.name);
+            Goal(other.transform.localPosition.x);
         }
     }
 
-    public void Goal(string Gol_Equipo) // Hay que tener dos porterias o encontrar como cambiarle el nombre a los collider
+    public void Goal(string pelota_Xcord) // Hay que tener dos porterias o encontrar como cambiarle el nombre a los collider
     {
-        if (Gol_Equipo == "RedGoal")
+        if (pelota_Xcord > 0)
         {
             if (Ultimo_Equipo == "JugadorRojo")
             {
@@ -82,7 +83,7 @@ public class Arbitro : MonoBehaviour
 
             // goles_azul++;
         }
-        else if (Gol_Equipo == "BlueGoal")
+        else if (pelota_Xcord < 0)
         {
             if (Ultimo_Equipo == "JugadorAzul")
             {
