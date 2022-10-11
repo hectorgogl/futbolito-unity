@@ -66,7 +66,7 @@ public class Arbitro : MonoBehaviour
         }
     }
 
-    public void Goal(string pelota_Xcord) // Hay que tener dos porterias o encontrar como cambiarle el nombre a los collider
+    public void Goal(float pelota_Xcord) // Hay que tener dos porterias o encontrar como cambiarle el nombre a los collider
     {
         if (pelota_Xcord > 0)
         {
@@ -101,7 +101,7 @@ public class Arbitro : MonoBehaviour
 
         RestartMatch();
 
-        Debug.Log("Blue: " + goles_azul + " - Red: " + goles_rojo);
+        // Debug.Log("Blue: " + goles_azul + " - Red: " + goles_rojo);
     }
 
     void RestartPelota()
