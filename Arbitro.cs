@@ -22,13 +22,13 @@ public class Arbitro : MonoBehaviour
     {
         Ultimo_Equipo = "";
 
-        maximo_goles = 2;
+        // maximo_goles = 2;
 
         UltimoTiempo_PelotaTocada = Time.time;
         Tiempo_Restart = 10;
 
-        goles_azul = 0;
-        goles_rojo = 0;
+        // goles_azul = 0;
+        // goles_rojo = 0;
     }
 
     void Update()
@@ -41,20 +41,20 @@ public class Arbitro : MonoBehaviour
             RestartPelota();
         }
 
-        if (goles_azul >= maximo_goles)
-        {
-            // agente_azul.GanarPartido();
-            // agente_rojo.PerderPartido();
+        // if (goles_azul >= maximo_goles)
+        // {
+        //     agente_azul.GanarPartido();
+        //     agente_rojo.PerderPartido();
 
-            RestartMatch();
-        }
-        else if (goles_rojo >= maximo_goles)
-        {
-            // agente_azul.PerderPartido();
-            // agente_rojo.GanarPartido();
+        //     RestartMatch();
+        // }
+        // else if (goles_rojo >= maximo_goles)
+        // {
+        //     agente_azul.PerderPartido();
+        //     agente_rojo.GanarPartido();
 
-            RestartMatch();
-        }
+        //     RestartMatch();
+        // }
     }
 
     void OnTriggerEnter(Collider other) //Agrege el metodo de colision hay que checar que funciona
@@ -80,7 +80,7 @@ public class Arbitro : MonoBehaviour
                 agente_azul.Gol();
             }
 
-            goles_azul++;
+            // goles_azul++;
         }
         else if (Gol_Equipo == "BlueGoal")
         {
@@ -95,10 +95,10 @@ public class Arbitro : MonoBehaviour
                 agente_rojo.Gol();
             }
 
-            goles_rojo++;
+            // goles_rojo++;
         }
 
-        RestartPelota();
+        RestartMatch();
 
         Debug.Log("Blue: " + goles_azul + " - Red: " + goles_rojo);
     }
@@ -117,8 +117,8 @@ public class Arbitro : MonoBehaviour
     {
         RestartPelota();
 
-        goles_azul = 0;
-        goles_rojo = 0;
+        // goles_azul = 0;
+        // goles_rojo = 0;
 
         agente_azul.TerminarPartido();
         agente_rojo.TerminarPartido();

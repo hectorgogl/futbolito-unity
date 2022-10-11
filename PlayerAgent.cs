@@ -122,19 +122,19 @@ public class PlayerAgent : Agent
         EndEpisode();
     }
 
-    public void GanarPartido()
-    {
-        AddReward(9);
-    }
+    // public void GanarPartido()
+    // {
+    //     AddReward(9);
+    // }
 
-    public void PerderPartido()
-    {
-        AddReward(-9);
-    }
+    // public void PerderPartido()
+    // {
+    //     AddReward(-9);
+    // }
 
     public void Gol()
     {
-        AddReward(5);
+        AddReward(9);
     }
 
     // public void TiroBloqueado()
