@@ -10,7 +10,7 @@ public class Arbitro : MonoBehaviour
     public PlayerAgent agente_rojo;
 
     string Ultimo_Equipo; // Ultimo equipo que toco la pelota
-
+    //para tener un limite
     int maximo_goles;
 
     float UltimoTiempo_PelotaTocada;
@@ -25,7 +25,7 @@ public class Arbitro : MonoBehaviour
 
         // maximo_goles = 2;
 
-        UltimoTiempo_PelotaTocada = Time.time;
+        UltimoTiempo_PelotaTocada = Time.time; //tener referencia de cuando tocan la pelota
         Tiempo_Restart = 10;
 
         // goles_azul = 0;
@@ -34,7 +34,8 @@ public class Arbitro : MonoBehaviour
 
     void Update()
     {
-        if (Time.time - UltimoTiempo_PelotaTocada > Tiempo_Restart)
+        if (Time.time - UltimoTiempo_PelotaTocada > Tiempo_Restart) //lo usamos para que no se quede la pelota atascada y no se haga nada
+        {
         {
             // agente_azul.RestartedBall();
             // agente_rojo.RestartedBall();
@@ -62,13 +63,13 @@ public class Arbitro : MonoBehaviour
     {
         if (other.gameObject.tag == "Pelota")
         {
-            Goal(other.transform.localPosition.x);
+            Goal(other.transform.localPosition.x); //obtenemos posicion en x para evaluar el gol dependiendo en que lado de la cancha este la pelota
         }
     }
 
-    public void Goal(float pelota_Xcord) // Hay que tener dos porterias o encontrar como cambiarle el nombre a los collider
+    public void Goal(float pelota_Xcord) //obtenemos cordenada y evaluamos el gol
     {
-        if (pelota_Xcord > 0)
+        if (pelota_Xcord > 0) //estas condiciones son para saber de quien fue el gol o autogol
         {
             if (Ultimo_Equipo == "JugadorRojo")
             {
@@ -99,22 +100,22 @@ public class Arbitro : MonoBehaviour
             // goles_rojo++;
         }
 
-        RestartMatch();
+        RestartMatch(); //reiniciamos cuando se meta gol para seguir el juego
 
         // Debug.Log("Blue: " + goles_azul + " - Red: " + goles_rojo);
     }
 
-    void RestartPelota()
+    void RestartPelota() //vuelve a generar la pelota
     {
         pelota.RestartPosition();
-        pelota.ApplyRandomForce();
+        pelota.ApplyRandomForce(); 
         
         Ultimo_Equipo = "";
 
         UltimoTiempo_PelotaTocada = Time.time;
     }
 
-    void RestartMatch()
+    void RestartMatch() //para reinciar el juego
     {
         RestartPelota();
 
@@ -125,7 +126,7 @@ public class Arbitro : MonoBehaviour
         agente_rojo.TerminarPartido();
     }
 
-    public void TouchedBall(string ultimo_jugador)
+    public void TouchedBall(string ultimo_jugador) //saber que equipo esta tocando la pelota
     {
         if (ultimo_jugador == "JugadorRojo")
         {
@@ -153,7 +154,7 @@ public class Arbitro : MonoBehaviour
         }
     }
 
-    public void NotTouching()
+    public void NotTouching() //saber quien no esta tocando nada
     {
         agente_rojo.NoTocando();
         agente_azul.NoTocando();
