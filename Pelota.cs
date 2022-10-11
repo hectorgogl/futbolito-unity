@@ -24,10 +24,6 @@ public class Pelota : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        // if (other.gameObject.tag != "Untagged")
-        // {
-        //     Debug.Log("Ball touch: " + other.gameObject.tag);
-        // }
 
         if (other.gameObject.tag == "JugadorRojo")
         {

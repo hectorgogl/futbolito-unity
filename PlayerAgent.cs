@@ -10,7 +10,7 @@ public class PlayerAgent : Agent
     public GameObject[] palos;
     Rigidbody[] palosRigidbodys;
 
-    public Rigidbody[] enemyPalosRigidbodys; //Creo que esto es irrelevante
+    public Rigidbody[] enemyPalosRigidbodys; 
 
     public Transform pelota;
     public Rigidbody pelotaRigidBody;
@@ -122,25 +122,10 @@ public class PlayerAgent : Agent
         EndEpisode();
     }
 
-    // public void GanarPartido()
-    // {
-    //     AddReward(9);
-    // }
-
-    // public void PerderPartido()
-    // {
-    //     AddReward(-9);
-    // }
-
     public void Gol()
     {
         AddReward(9);
     }
-
-    // public void TiroBloqueado()
-    // {
-    //     AddReward(1);
-    // }
 
     public void TocoPelota()
     {
@@ -158,10 +143,6 @@ public class PlayerAgent : Agent
         AddReward(-6);
     }
 
-    // public void RestartedBall()
-    // {
-    //     AddReward(-1);
-    // }
 }
 
 
