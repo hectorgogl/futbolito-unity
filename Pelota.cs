@@ -26,10 +26,7 @@ public class Pelota : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        // if (other.gameObject.tag != "Untagged")
-        // {
-        //     Debug.Log("Ball touch: " + other.gameObject.tag);
-        // }
+
         // Esta función le dice al arbitro quien fue el último equipo
         // en tocar la pelota
         if (other.gameObject.tag == "JugadorRojo")
